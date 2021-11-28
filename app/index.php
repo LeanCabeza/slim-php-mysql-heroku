@@ -11,8 +11,14 @@ use Slim\Routing\RouteCollectorProxy;
 use Slim\Routing\RouteContext;
 
 require __DIR__ . '/../vendor/autoload.php';
-
+require_once './controllers/UsuarioController.php';
+require_once './controllers/ProductoController.php';
+require_once './controllers/MesaController.php';
+require_once './controllers/PedidoController.php';
+require_once './controllers/EncuestaController.php';
 require_once './db/AccesoDatos.php';
+require_once './middlewares/AutenticacionMiddelware.php';
+require_once './middlewares/UsuariosMiddleware.php';
 // require_once './middlewares/Logger.php';
 
 require_once './controllers/UsuarioController.php';
