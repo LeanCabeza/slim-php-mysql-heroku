@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "bf7f83aa-41f2-435e-89f3-fce948ad5630",
-		"name": "zZHEROKU",
+		"name": "zZHEROKU PUNTOS DE ENTREGA",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -1260,6 +1260,166 @@
 			]
 		},
 		{
+			"name": "SOCIOS",
+			"item": [
+				{
+					"name": "LISTAR ENCUESTAS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_SOCIO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/encuesta/",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"encuesta",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR POR ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_SOCIO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/encuesta/10",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"encuesta",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GENERAR PDF ENCUSTAS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_SOCIO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/socios/pdf",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"socios",
+								"pdf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CSV TO BDD",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_SOCIO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/socios/CSVtoBBDD",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"socios",
+								"CSVtoBBDD"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BDD TO CSV",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_SOCIO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/socios/BBDDtoCSV",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"socios",
+								"BBDDtoCSV"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "LOGIN",
 			"request": {
 				"method": "POST",
@@ -1269,7 +1429,7 @@
 					"formdata": [
 						{
 							"key": "mail",
-							"value": "cliente@cliente.com",
+							"value": "socio@socio.com",
 							"type": "text"
 						},
 						{
