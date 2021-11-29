@@ -109,7 +109,7 @@ $group->delete('/{id}', \PedidoController::class . ':BorrarUno');
 ->add(\AutenticacionMiddelware::class . ':VerificarToken');
 
 // ENCUESTAS
-$app->group('/encuenta', function (RouteCollectorProxy $group) {
+$app->group('/encuesta', function (RouteCollectorProxy $group) {
 $group->get('[/]', \EncuestaController::class . ':TraerTodos');
 $group->get('/{id}', \EncuestaController::class . ':TraerUno');
 $group->post('[/]', \EncuestaController::class . ':CargarUno');
