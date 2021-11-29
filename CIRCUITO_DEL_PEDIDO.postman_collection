@@ -1,0 +1,1306 @@
+{
+	"info": {
+		"_postman_id": "469b8cca-0eab-4f66-b35c-ee8019f35512",
+		"name": "zZHEROKU CIRCUITO DEL PEDIDO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "MOZO OFRECE LAS MESAS DISPONIBLES",
+			"item": [
+				{
+					"name": "LISTAR MESAS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_MOZO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/mesas",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"mesas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MOZO AGENDA CLIENTES EN BDD",
+			"item": [
+				{
+					"name": "REGISTRAR CLIENTE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_MOZO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nombre",
+									"value": "Jose",
+									"type": "text"
+								},
+								{
+									"key": "apellido",
+									"value": "Capaldo",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "tipo_usuario",
+									"value": "CLIENTE",
+									"type": "text"
+								},
+								{
+									"key": "mail",
+									"value": "Jorgelin@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/clientes",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MOZO ENTREGA LA CARTILLA",
+			"item": [
+				{
+					"name": "CARTILLA",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_MOZO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/productos",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MOZO TOMA PEDIDO",
+			"item": [
+				{
+					"name": "ALTA PEDIDO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_MOZO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id_mesa",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "id_cliente",
+									"value": "19",
+									"type": "text"
+								},
+								{
+									"key": "id_producto",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "sector",
+									"value": "COCINA",
+									"type": "text"
+								},
+								{
+									"key": "minutosEspera",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "EN PREPARACION",
+									"type": "text"
+								},
+								{
+									"key": "cantidad",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/leand/Desktop/Yo.JPG"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/pedidos",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "COCINA ASIGNA EL TIEMPO DE PREPARACION Y ACTUALIZA ESTADO",
+			"item": [
+				{
+					"name": "LISTAR SEGUN SECTOR.",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_COCINERO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/pedidos/obtenerPorTipo/",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pedidos",
+								"obtenerPorTipo",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EN PREPARACION",
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_COCINERO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPedido",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "EN PREPARACION",
+									"type": "text"
+								},
+								{
+									"key": "tiempo",
+									"value": "30",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/pedidos/actualizarEstadoPedido/",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pedidos",
+								"actualizarEstadoPedido",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTO PARA ENTREGAR",
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_COCINERO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPedido",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "LISTO PARA ENTREGAR",
+									"type": "text"
+								},
+								{
+									"key": "tiempo",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/pedidos/actualizarEstadoPedido/",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pedidos",
+								"actualizarEstadoPedido",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BARTENDER ASIGNA EL TIEMPO DE PREPARACION Y ACTUALIZA ESTADO Copy",
+			"item": [
+				{
+					"name": "LISTAR SEGUN SECTOR.",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_BARTENDER}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/pedidos/obtenerPorTipo/",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pedidos",
+								"obtenerPorTipo",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EN PREPARACION",
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_BARTENDER}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPedido",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "EN PREPARACION",
+									"type": "text"
+								},
+								{
+									"key": "tiempo",
+									"value": "15",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/pedidos/actualizarEstadoPedido/",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pedidos",
+								"actualizarEstadoPedido",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTO PARA ENTREGAR",
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_BARTENDER}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPedido",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "LISTO PARA ENTREGAR",
+									"type": "text"
+								},
+								{
+									"key": "tiempo",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/pedidos/actualizarEstadoPedido/",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pedidos",
+								"actualizarEstadoPedido",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CERVECERO ASIGNA EL TIEMPO DE PREPARACION Y ACTUALIZA ESTADO Copy 2",
+			"item": [
+				{
+					"name": "LISTAR SEGUN SECTOR.",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_CERVECERO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/pedidos/obtenerPorTipo/",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pedidos",
+								"obtenerPorTipo",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EN PREPARACION",
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_CERVECERO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPedido",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "EN PREPARACION",
+									"type": "text"
+								},
+								{
+									"key": "tiempo",
+									"value": "15",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/pedidos/actualizarEstadoPedido/",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pedidos",
+								"actualizarEstadoPedido",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTO PARA ENTREGAR",
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_CERVECERO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPedido",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "LISTO PARA ENTREGAR",
+									"type": "text"
+								},
+								{
+									"key": "tiempo",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/pedidos/actualizarEstadoPedido/",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pedidos",
+								"actualizarEstadoPedido",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MOZO VERIFICA QUE HAYA PEDIDOS PARA ENTREGAR",
+			"item": [
+				{
+					"name": "PEDIDOS LISTOS PARA ENTREGAR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_MOZO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/pedidos/obtenerPorTipo/",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pedidos",
+								"obtenerPorTipo",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MOZO ACTUALIZA EL ESTADO A COMIENDO",
+			"item": [
+				{
+					"name": "PEDIDO \"SERVIDO\"",
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_MOZO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPedido",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "Comiendo",
+									"type": "text"
+								},
+								{
+									"key": "tiempo",
+									"value": "60",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/pedidos/actualizarEstadoPedido/",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pedidos",
+								"actualizarEstadoPedido",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MESA \"COMIENDO\"",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_MOZO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id_mesa",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "COMIENDO",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/mesas/actualizarEstadoDeMesa",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"mesas",
+								"actualizarEstadoDeMesa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MOZO OFRECE SACAR FOTO CON LA COMIDA",
+			"item": [
+				{
+					"name": "MOZO SACA FOTO",
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_MOZO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id_cliente",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "id_pedido",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/leand/Desktop/Yo.JPG"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/pedidos/sacarFoto",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pedidos",
+								"sacarFoto"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MOZO COBRA EL GASTO DEL PEDIDO",
+			"item": [
+				{
+					"name": "OBTENER CUENTA MESA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_MOZO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id_mesa",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/mesas/obtenerCuenta",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"mesas",
+								"obtenerCuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "COBRA POR LOS PEDIDOS",
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_MOZO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPedido",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "COBRADO",
+									"type": "text"
+								},
+								{
+									"key": "tiempo",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/pedidos/actualizarEstadoPedido/",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pedidos",
+								"actualizarEstadoPedido",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MESA CON CUENTA EN $0",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_MOZO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id_mesa",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/mesas/cuentaCero",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"mesas",
+								"cuentaCero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MESA \"ABONO LA CUENTA\"",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_MOZO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id_mesa",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "ABONO LA CUENTA",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/mesas/actualizarEstadoDeMesa",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"mesas",
+								"actualizarEstadoDeMesa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MOZO OFRECE LA ENCUESTA",
+			"item": [
+				{
+					"name": "ENCUESTA CALIDAD",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_CLIENTE}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id_mesa",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "mail_usuario",
+									"value": "cliente@cliente.com",
+									"type": "text"
+								},
+								{
+									"key": "valoracion_descripcion",
+									"value": "Todo Mas que bien",
+									"type": "text"
+								},
+								{
+									"key": "valoracion_mesa",
+									"value": "9",
+									"type": "text"
+								},
+								{
+									"key": "valoracion_restaurante",
+									"value": "9",
+									"type": "text"
+								},
+								{
+									"key": "valoracion_mozo",
+									"value": "9",
+									"type": "text"
+								},
+								{
+									"key": "valoracion_cocinero",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "valoracion_cervecero",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "valoracion_bartender",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/encuenta",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"encuenta"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LIMPIA LA MESA Y LA MARCA COMO DISPONIBLE",
+			"item": [
+				{
+					"name": "MESA \"LIMPIANDO\"",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_MOZO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id_mesa",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "LIMPIANDO",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/mesas/actualizarEstadoDeMesa",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"mesas",
+								"actualizarEstadoDeMesa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PEDIDO FINALIZADO",
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_MOZO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPedido",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "COMPLETADO",
+									"type": "text"
+								},
+								{
+									"key": "tiempo",
+									"value": "15",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/pedidos/actualizarEstadoPedido/",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pedidos",
+								"actualizarEstadoPedido",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MESA DISPONIBLE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_MOZO}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id_mesa",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "DISPONIBLE",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://slim-php-heroku-cabeza.herokuapp.com/mesas/actualizarEstadoDeMesa",
+							"protocol": "https",
+							"host": [
+								"slim-php-heroku-cabeza",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"mesas",
+								"actualizarEstadoDeMesa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
