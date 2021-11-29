@@ -56,7 +56,7 @@ class Encuesta
     public static function obtenerTodos()
     {
         $objAccesoDatos = AccesoDatos::obtenerInstancia();
-        $consulta = $objAccesoDatos->prepararConsulta("SELECT * FROM Encuestas");
+        $consulta = $objAccesoDatos->prepararConsulta("SELECT * FROM encuestas");
         $consulta->execute();
 
         return $consulta->fetchAll(PDO::FETCH_CLASS, 'Encuesta');
